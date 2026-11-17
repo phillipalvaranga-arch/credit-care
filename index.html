@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Credit Care</title>
+<meta name="description" content="Track, repair, and maintain your credit. Your data stays on your device.">
+<meta name="theme-color" content="#0b3d4a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/favicon.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+<script>
+(function(){try{var t=localStorage.getItem("creditcare-theme");if(!t)t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t;}catch(e){}})();
+</script>
+</head>
+<body>
+<header class="topbar">
+  <button id="menuBtn" class="icon-btn only-mobile" aria-label="Open menu">&#9776;</button>
+  <a href="#/dashboard" class="brand"><img src="icons/icon-192.png" alt="" width="34" height="34"><span>Credit Care</span></a>
+  <span id="syncBadge" class="sync-badge" hidden></span>
+  <button id="themeBtn" class="icon-btn" aria-label="Switch light or dark mode">&#9790;</button>
+</header>
+<div class="layout">
+  <nav id="rail" class="rail" aria-label="Main"></nav>
+  <div id="railBackdrop" class="rail-backdrop"></div>
+  <main id="view" class="view" tabindex="-1"></main>
+</div>
+<nav id="tabbar" class="tabbar only-mobile" aria-label="Quick"></nav>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="printArea" class="print-area"></div>
+<script src="sync.js"></script>
+<script src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) { window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js"); }); }
+</script>
+</body>
+</html>
